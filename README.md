@@ -1,1 +1,1 @@
-<h1><b>Covid Vaccination Centre details</b></h1>
+<h1><b>Covid Vaccination Center details</b></h1>
