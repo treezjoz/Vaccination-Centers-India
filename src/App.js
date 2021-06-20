@@ -110,7 +110,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Covid Vaccination Centres in India</h1>
+      <h1>Covid Vaccination Centers in India</h1>
       <div style={{ width: 400, marginBottom: 20 }}>
         <b>State</b>
         <Select
