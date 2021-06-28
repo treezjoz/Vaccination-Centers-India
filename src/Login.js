@@ -7,7 +7,6 @@ export default function Login() {
   const {register, handleSubmit} = useForm();
   const [errorMessage, setErrorMessage] = useState(null);
   const history = useHistory();
-  console.log(history);
 
   const apiEndpoint="https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP";
 
