@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
 import Select from "react-select";
 import axios from "axios";
 import DatePicker from "react-datepicker";
@@ -7,6 +6,7 @@ import moment from "moment";
 import {addWeeks} from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 import Table from './Table';
+import { useHistory } from "react-router-dom";
 
 function Display() {
   const [state, setState] = useState(null);
@@ -15,6 +15,7 @@ function Display() {
   const [dist_list, setDistList] = useState({ districts: [],});
   const [center_list, setCenterList] = useState({ centers: [],});
   const [startDate, setStartDate] = useState(new Date());
+  const history = useHistory();
 
   const apistat = "https://cdn-api.co-vin.in/api/v2/admin/location/states";
   const getStates = () => {
@@ -108,9 +109,14 @@ function Display() {
     ], []
   );
 
+  function handleLogout() {
+        sessionStorage.removeItem('token');
+        history.push('/');
+    }
+
   return (
     <div className="App">
-      <Link to="/" className="logout">Logout</Link>
+      <button className="logout" onClick={() => handleLogout()}>Logout</button>
       <h1>Covid Vaccination Centers in India</h1>
       <div style={{ width: 400, marginBottom: 20 }}>
         <label>State</label>
