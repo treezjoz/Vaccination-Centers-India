@@ -8,6 +8,20 @@ import "react-datepicker/dist/react-datepicker.css";
 import Table from './Table';
 import { useHistory } from "react-router-dom";
 
+const Slots = ({ values }) => {
+  return (
+    <>
+      {values.map((slot, idx) => {
+        return (
+          <span key={idx} className="badge">
+            {slot}
+          </span>
+        );
+      })}
+    </>
+  );
+};
+
 function Display() {
   const [state, setState] = useState(null);
   const [dist, setDist] = useState(null);
@@ -85,10 +99,6 @@ function Display() {
             accessor:"fee_type"
           },
           {
-            Header:"Date",
-            accessor:"sessions[0].date"
-          },
-          {
             Header:"Min_Age",
             accessor:"sessions[0].min_age_limit"
           },
@@ -97,12 +107,17 @@ function Display() {
             accessor:"sessions[0].vaccine"
           },
           {
-            Header:"Avail_Dose1",
+            Header:"Dose1",
             accessor:"sessions[0].available_capacity_dose1"
           },
           {
-            Header:"Avail_Dose2",
+            Header:"Dose2",
             accessor:"sessions[0].available_capacity_dose2"
+          },
+          {
+            Header:"Slots",
+            accessor:"sessions[0].slots",
+            Cell: ({ cell: { value } }) => <Slots values={value} />
           },
         ]
       }
